@@ -1,0 +1,1348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_154jetu" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.2.1">
+  <decision id="Decision_1ihh23m" name="Is there a procedure code validation error on this claim?">
+    <extensionElements>
+      <biodi:bounds x="610" y="510" width="180" height="80" />
+      <biodi:edge source="Decision_0l0v8pl">
+        <biodi:waypoints x="700" y="694" />
+        <biodi:waypoints x="700" y="590" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="IMPORTONLOAD" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1byqyrn">
+      <input id="InputClause_083yald" label="Insurance Reporting Category">
+        <inputExpression id="LiteralExpression_1jy5bru" typeRef="string" />
+      </input>
+      <input id="InputClause_0mshd12" label="Government Funded Type">
+        <inputExpression id="LiteralExpression_0cwm8xb" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0gkt8tl" label="Insurance Type">
+        <inputExpression id="LiteralExpression_18emcc2" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1q6ayjp" label="Allowable Category">
+        <inputExpression id="LiteralExpression_0y7b6hb" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_03ppe4c" label="Insurance Package">
+        <inputExpression id="LiteralExpression_12q85aw" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1red24m" label="ActiveCSC">
+        <inputExpression id="LiteralExpression_03cwsjo" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1nifdm5" label="ProcedureCode">
+        <inputExpression id="LiteralExpression_0exs0mh" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1uuv177" label="Routing Entities">
+        <inputExpression id="LiteralExpression_1gsuh0l" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_15q9taj" label="Processor Program">
+        <inputExpression id="LiteralExpression_1xwnedp" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0wgggcf" label="Eligibility Class">
+        <inputExpression id="LiteralExpression_1t8nyos" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1nv2d0c" label="Plan Coverage Description Match?">
+        <inputExpression id="LiteralExpression_0dhviho" typeRef="string">
+          <text>plancoveragedesc</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1wqgni0" label="Insurance Package Entity Relationship">
+        <inputExpression id="LiteralExpression_0583jk6" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_04jijmt" label="Procedure code valdiation error" typeRef="string" />
+      <output id="OutputClause_1l7y037" label="Fix Text" typeRef="string" />
+      <output id="OutputClause_0hipuoy" label="Error Text" typeRef="string" />
+      <rule id="DecisionRule_0skvja5">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_1eer0r1">
+          <text>Medicaid-TX [233]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_182x17m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10gahb8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05irjjd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00qwlpq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sjunsh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z19w9x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v15ajw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u0jc55">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rfjctf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04vgxk0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p8gtq5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12izx3a">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05ip9hk">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12nbkm5">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cnqopw">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_169ed4i">
+          <text>Amerigroup-TX [535]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sxfi1b">
+          <text>Medicaid Replacement [2]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14uwl72">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_172mwk8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12rl4u7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_058p9gc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18035ba">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oju08k">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fzszsn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cfsufo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15ppgnc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0w91z1t">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bjdkvq">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ggn8x6">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fcw736">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y5tz6o">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_0xjjq76">
+          <text>Parkland Community Health Plan [2799]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_137g40h">
+          <text>Medicaid Replacement [2]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03okbjw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eadiah">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16ql33v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o26jos">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x09je5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tcpr47">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13hhzw1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wttgb2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uzot8z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qwjru5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06rs8ai">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1msj5xh">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hvsuhf">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_121jhqf">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_17niqbb">
+          <text>Parkland Community Health Plan [2799]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ok1zv4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t2uxjt">
+          <text>Medicaid [MC]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a0guqq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g4q3wg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uknki2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w432bh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1icj158">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wxwku4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12uk2xc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wlnr0z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19fba4u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0re69jk">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dmnu3r">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14d222z">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bm7dph">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_0c08n2y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cfnct7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yssw7m">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0seu8fr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o88to6">
+          <text>In (133473, 133480, 249443, 58707)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cymq65">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s24dy0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fm5fj1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pl8z4z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01n7sbf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eg56sn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1blpmjn">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q75kdr">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00220oi">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h5vyoe">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19w9ake">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_13qtcsf">
+          <text>In (Absolute Total Care [1092], Medicaid-MS [544])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rjnzs1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qbtsle">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a0lpi6">
+          <text>Medicaid-SC [255]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14llghr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ltp4pe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pqucpg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08t1k2z">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lpe3oc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f44ucw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bk9j96">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12cgl03">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0opclyw">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n7boec">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kcyptz">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ypgmo5">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_0xdel32">
+          <text>Community Health Choice [422]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tph0am">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_095cj5c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_174qvhs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_188h53y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ves1z9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zj0wug">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_082thgf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lo86q5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15xpurg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t1pbv8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m80jj9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s38rg2">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_103ceae">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yh52rz">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1t7nf0k">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_1l4usda">
+          <text>In (Medicaid-SC [232], Select Health of SC [385])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l41ju9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vaxmu0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03nuv4d">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sme6hl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bvf237">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0efr8lt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14vnbxf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0y1wq68">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11m5ilq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rbccjz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b69q84">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i0vi8r">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e0nah6">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kchljr">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14v2tos">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_0837fv0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0aq8n0c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g587ml">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0elsstt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t8iaqx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i7cfhv">
+          <text>BCBS-SC BlueChoice Medicaid [10188]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sdafoa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0paxl36">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g0ubdf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gd07aq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hbh7yf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kmjgms">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01gslil">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o09z01">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jk2w9y">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06d5rd0">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_13hbzin">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v8v2qe">
+          <text>Medicaid Replacement [2]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p97fso">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0msq43n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09fo900">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l9gz3a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q7gbnm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f4z4zi">
+          <text>TEXAS STAR AND CHIP [TX_STRCHP]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kmodep">
+          <text>In (STAR, STAR Kids)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oenz9c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xc8041">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16kajs1">
+          <text>Processor</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dmrq02">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xzidyx">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0y7ddca">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b4zavf">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_1py9ksx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rocbqo">
+          <text>Medicaid Replacement [2]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11w14cs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bdhskt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xlo0wz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tf69n1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s6jqhj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dvozkc">
+          <text>TEXAS STAR AND CHIP [TX_STRCHP]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mljv18">
+          <text>CHIP</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05xqmbm">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_181eg5n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ogxz7g">
+          <text>Processor</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jzx3eo">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05htkcd">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fr9c2o">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03mttym">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_0d32i1r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qspx54">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0txvmtz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vo2ci2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19ezg0j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oc2f3c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a5ga39">
+          <text>In (59400, 59409, 59410, 59510, 59514, 59515, 
+59610, 59612, 59614, 59618, 59620, 59622)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jub8mn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gyfyaf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ht3zj9">
+          <text>COMM_HEALTH_CHOICE [COMM_HEALTH_CHOICE]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01xac4q">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m8ruxy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_108shlx">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09t68c5">
+          <text>"Please note the following steps to bill this claim. Replace procedure code[[s]] $pxtext with individual charge lines for each service performed within the patient's obstetrical episode of care for this delivery. Update the charge amounts so that the total charge amount for the new charge lines match the total amount billed to the primary payor for procedure code[[s]] $amounttxt. Please contact the CSC if further assistance is required."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06l10j7">
+          <text>"Per payor, global delivery code[[s]] $pxtext [[is|are]] not [[a|]] billable code[[s]] for obstetric delivery services as obstetrical care should be billed as separate services."</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0l0v8pl" name="Does the PlanCoverageesc match PlanCoverageDesc_Regex?">
+    <extensionElements>
+      <biodi:bounds x="618" y="697" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_18ay95d">
+      <input id="InputClause_1av7sbu" label="PLANCOVERAGEDESC_REGEX">
+        <inputExpression id="LiteralExpression_04mr2vl" typeRef="string" />
+      </input>
+      <input id="InputClause_0bhb1vh" label="plancoveragedesc">
+        <inputExpression id="LiteralExpression_1kb0nx6" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0xierdc" label="Plan Coverage Description Match?" typeRef="string" />
+      <rule id="DecisionRule_1mmoxoq">
+        <inputEntry id="UnaryTests_1r33wwn">
+          <text>CHIP PERINATAL</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1to3y5q">
+          <text>CHIP PERINATAL</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19gpmnz">
+          <text>Yes</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1kjp6x5" name="Is there a charge bundling error on this claim?">
+    <extensionElements>
+      <biodi:bounds x="929" y="509" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_11u4ksa">
+      <input id="InputClause_08uxxwi" label="Charge::ProcedureCode">
+        <inputExpression id="LiteralExpression_02wbzqi" typeRef="string" />
+      </input>
+      <output id="OutputClause_187llwz" label="Charge bundling error?" typeRef="string" />
+      <output id="OutputClause_0ekqhuu" label="FixText" typeRef="string" />
+      <rule id="DecisionRule_1f87tly">
+        <description>1.395 Comp Metabolic Panel Code Bundling</description>
+        <inputEntry id="UnaryTests_1858lnv">
+          <text>All of (82040, 82247, 82310, 82374, 
+82435, 82565, 82947, 84075, 84132, 
+84155, 84295, 84460, 84450, 84520)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yq545o">
+          <text>Yes</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wdp94h">
+          <text>"These codes are component codes of a Comp Metabolic Panel. Please use the appropriate Global Code."</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_0ipdw7u" name="Should this claim HOLD for coding errors?">
+    <extensionElements>
+      <biodi:bounds x="596" y="216" width="180" height="80" />
+      <biodi:edge source="Decision_1ihh23m">
+        <biodi:waypoints x="686" y="510" />
+        <biodi:waypoints x="683" y="296" />
+      </biodi:edge>
+      <biodi:edge source="Decision_1kjp6x5">
+        <biodi:waypoints x="952" y="509" />
+        <biodi:waypoints x="711" y="296" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1ihh23m" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1kjp6x5" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1pzixak">
+      <input id="InputClause_1agdl50" label="Diagnosis code validation error">
+        <inputExpression id="LiteralExpression_0rdtx1f" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0qhtcwa" label="Procedure code valdiation error">
+        <inputExpression id="LiteralExpression_1vy1zjf" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0dzppsr" label="Charge bundling error">
+        <inputExpression id="LiteralExpression_109sqz7" typeRef="string" />
+      </input>
+      <output id="OutputClause_0z1v738" label="Action" typeRef="string" />
+      <rule id="DecisionRule_0cdfznp">
+        <description>1.242 Primary Diagnosis Code Review Required</description>
+        <inputEntry id="UnaryTests_01jxmhy">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e0wwv9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xo3wm1">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m4i6ur">
+          <text>HOLD</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08nvyt6">
+        <description>1.383 Procedure Code Review Required</description>
+        <inputEntry id="UnaryTests_1chte0j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gtv1tl">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11wf5lm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rymr9h">
+          <text>HOLD</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sdgqyw">
+        <description>1.395 Comp Metabolic Panel Code Bundling</description>
+        <inputEntry id="UnaryTests_04kdbnr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h32f8p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1havejn">
+          <text>Yes</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14rluog">
+          <text>HOLD</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1so8p9x" name="Is the Dx code at charge level valid?">
+    <extensionElements>
+      <biodi:bounds x="389" y="379" width="180" height="80" />
+      <biodi:edge source="Decision_1kd1utq">
+        <biodi:waypoints x="470" y="495" />
+        <biodi:waypoints x="471" y="459" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1kd1utq" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1rj9qdf">
+      <input id="InputClause_1d4x6qo" label="Claim Rule Category">
+        <inputExpression id="LiteralExpression_0a2l2nt" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0e8u376" label="Routing Entity">
+        <inputExpression id="LiteralExpression_0uoznks" typeRef="string" />
+      </input>
+      <input id="InputClause_0ycneln" label="Insurance Reporting Category">
+        <inputExpression id="LiteralExpression_0v3xk3r" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1hyf4x0" label="Diagnosis Code set">
+        <inputExpression id="LiteralExpression_0psoyk1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0dfu5be" label="Primary Diagnosis Code of Charge">
+        <inputExpression id="LiteralExpression_0vifg6m" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1w5h83e" label="Charge Valid?" name="Add to Invalid charge list" typeRef="string" />
+      <output id="OutputClause_1aav8bn" label="Type of Validation" typeRef="string" />
+      <rule id="DecisionRule_0182dmg">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1t9wed3">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eyp677">
+          <text>ALABAMA [AL]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01adt50">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dpz84l">
+          <text>ICD-9</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04cezia">
+          <text>Starts with E</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gyr3vu">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18gxze8">
+          <text>External causes of morbidity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1weh4ix">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1417l4y">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l859mh">
+          <text>ALABAMA [AL]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0frr43b">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e0xbzf">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g8gkaf">
+          <text>In (V00-Y99)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ikqxx3">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0th0dvi">
+          <text>External causes of morbidity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02wpt2a">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1b2f2vu">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nlvupa">
+          <text>ALABAMA [AL]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_176dr84">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1npnegm">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1shl934">
+          <text>In (B90-B97)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05pazjb">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1drjm67">
+          <text>Sequelae of Infectious and parasitic disease</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1yqrqxo">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_0t8gkin">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ug9bqg">
+          <text>ALABAMA [AL]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i7f70h">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ldp4dm">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nd5hrd">
+          <text>Z3A</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0apho9k">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uybvun">
+          <text>Weeks of gestation of the pregnancy</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gq0yyd">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_06wxauz">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b3d649">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w8rzya">
+          <text>Humana [237]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o9f4xc">
+          <text>ICD-9</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pvjmfm">
+          <text>Starts with E</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dmu5l3">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11y3q2o">
+          <text>External causes of morbidity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0skdkn0">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_0sr3gtf">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pkaege">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05qcjsp">
+          <text>Humana [237]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1shcckl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1aot8y8">
+          <text>In (V00-Y99)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xqkjbi">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yoc0c5">
+          <text>External causes of morbidity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hqyfcp">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_13zvvqi">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wkyyfd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pjssss">
+          <text>Humana [237]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ao6354">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1e993h2">
+          <text>In (B90-B97)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nzkblk">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19n6g84">
+          <text>Sequelae of Infectious and parasitic disease</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1kd1utq" name="What should be considered as the Primary Charge?">
+    <extensionElements>
+      <biodi:bounds x="379" y="495" width="180" height="80" />
+      <biodi:edge source="Decision_1ooqr4e">
+        <biodi:waypoints x="466" y="614" />
+        <biodi:waypoints x="465" y="575" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1ooqr4e" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0qrqpye">
+      <input id="InputClause_1fv5wx2" label="Number of charges on claim">
+        <inputExpression id="LiteralExpression_032puov" typeRef="string" />
+      </input>
+      <input id="InputClause_1r9m5cp" label="Is first charge highest RVU charge?">
+        <inputExpression id="LiteralExpression_1di2s3b" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0jjcpfe" label="Primary Charge" typeRef="string" />
+      <rule id="DecisionRule_1uwdhck">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_11hieof">
+          <text>&gt;1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pccvc3">
+          <text>No</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zz7l70">
+          <text>Highest RVU charge should be set as the Primary Charge</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yi1b5q">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1u6h9np">
+          <text>=1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m8l1yj">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qn0p1n">
+          <text>Only charge</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18zwv78">
+        <inputEntry id="UnaryTests_0op4gxo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lmdjua">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ao132k">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1ooqr4e" name="Set highest RVU charge as first charge on the claim">
+    <extensionElements>
+      <biodi:bounds x="374" y="614" width="180" height="80" />
+    </extensionElements>
+    <variable id="InformationItem_1nhwjsq" />
+    <literalExpression id="LiteralExpression_1f6mwzl">
+      <text>Set highest RVU charge as first charge on the claim</text>
+    </literalExpression>
+  </decision>
+  <decision id="Decision_1v43e7n" name="Is the Dx at claim level valid?">
+    <extensionElements>
+      <biodi:bounds x="156" y="372" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="DecisionTable_1gs4y52">
+      <input id="InputClause_0yunk7x" label="Claim Rule Category">
+        <inputExpression id="LiteralExpression_0ldepfd" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1ctzom4" label="Insurance Reporting Category">
+        <inputExpression id="LiteralExpression_08wel89" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_16orod0" label="Primary Diagnosis code at Claim level">
+        <inputExpression id="LiteralExpression_0v2n23b" typeRef="string" />
+      </input>
+      <input id="InputClause_01bi8ca" label="Diagnosis Code set">
+        <inputExpression id="LiteralExpression_165czup" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_107aien" label="Charge Valid?" name="Add to Invalid charge list" typeRef="string" />
+      <output id="OutputClause_1y4bvrz" label="Type of Validation" typeRef="string" />
+      <rule id="DecisionRule_0l4kmqh">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1d53eic">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1slfncz">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jyhcct">
+          <text>Starts with E</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iuyeq3">
+          <text>ICD-9</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c6rrol">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x13q8q">
+          <text>External causes of morbidity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1on9z1d">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_06olot3">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lnsp0y">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a4kplz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16aziva">
+          <text>In (V00-Y99)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01y1zws">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06qhadb">
+          <text>External causes of morbidity</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l47qho">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_0y3x8g7">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wzgj8k">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vskj4i">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lmux3b">
+          <text>In (B90-B97)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kp88ql">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cq2om4">
+          <text>Sequelae of Infectious and parasitic disease</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13jgxm4">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_17yrzk6">
+          <text>Insurance Default [1]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tm0ovt">
+          <text>Not in (Contracts [180])</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mi73eg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vn33jq">
+          <text>Z3A</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fy0aqt">
+          <text>No</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05auo8d">
+          <text>Weeks of gestation of the pregnancy</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1houy2n" name="What are the list of validations on the claim?">
+    <extensionElements>
+      <biodi:bounds x="290" y="205" width="180" height="80" />
+      <biodi:edge source="Decision_1v43e7n">
+        <biodi:waypoints x="280" y="372" />
+        <biodi:waypoints x="354" y="285" />
+      </biodi:edge>
+      <biodi:edge source="Decision_1so8p9x">
+        <biodi:waypoints x="457" y="379" />
+        <biodi:waypoints x="408" y="288" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1v43e7n" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1so8p9x" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1sc8bwh">
+      <input id="InputClause_0yvswr8" label="Does the claim have a charge part of Invalid charge list?">
+        <inputExpression id="LiteralExpression_1g0ogkg" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_06po7e1" label="Type of Validation">
+        <inputExpression id="LiteralExpression_0dwp9x3" typeRef="string" />
+      </input>
+      <output id="OutputClause_0ubwknw" label="List of Validations" typeRef="string" />
+      <rule id="DecisionRule_01ahk0h">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1gsuitp">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pahayc">
+          <text>In(External causes of morbidity)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jo3uzr">
+          <text>"External causes of morbidity"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0brnaio">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1938dzo">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lmv1cr">
+          <text>In(Sequelae of Infectious and parasitic disease)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17kijbl">
+          <text>"Sequelae of Infectious and parasitic disease"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yz2okn">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_0pwvud3">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y4630z">
+          <text>In (Weeks of gestation of the pregnancy)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pmmkxd">
+          <text>"Weeks of gestation of the pregnancy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b7qx3i">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1c862i4">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1si270z">
+          <text>All of (External causes of morbidity,Sequelae of Infectious and parasitic disease)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1csjmth">
+          <text>"External causes of morbidity,Sequelae of Infectious and parasitic disease"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qik3b7">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_0zgbxpd">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sts3mn">
+          <text>All of (External causes of morbidity,Sequelae of Infectious and parasitic disease,Weeks of gestation of the pregnancy)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cxhohf">
+          <text>"External causes of morbidity,Sequelae of Infectious and parasitic disease,Weeks of gestation of the pregnancy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kp6vrn">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_016hdi0">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_094xtfl">
+          <text>All of (Sequelae of Infectious and parasitic disease,Weeks of gestation of the pregnancy)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rsyvi3">
+          <text>"Sequelae of Infectious and parasitic disease,Weeks of gestation of the pregnancy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b3siah">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_1ncbnnm">
+          <text>Yes</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04pbb4j">
+          <text>All of (External causes of morbidity,Weeks of gestation of the pregnancy)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kbp32b">
+          <text>"External causes of morbidity,Weeks of gestation of the pregnancy"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17hkpxp">
+        <inputEntry id="UnaryTests_0jxwkpi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17copf3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0shpotz">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1txk84y">
+        <inputEntry id="UnaryTests_1siyk5g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a3s2ev">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gojpe0">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1kcn6jh" name="What action needs to be done on the claim?">
+    <extensionElements>
+      <biodi:bounds x="287" y="81" width="180" height="80" />
+      <biodi:edge source="Decision_1houy2n">
+        <biodi:waypoints x="382" y="205" />
+        <biodi:waypoints x="383" y="161" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#Decision_1houy2n" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_18rpddu">
+      <input id="InputClause_0klovl7" label="Does the claim have a charge part of Invalid charge list?">
+        <inputExpression id="LiteralExpression_062rubo" typeRef="string" />
+      </input>
+      <output id="OutputClause_1oe650z" label="Action" typeRef="string" />
+      <output id="OutputClause_0aqyoev" label="Error Text" typeRef="string" />
+      <output id="OutputClause_18de29p" label="Visit Fix text" typeRef="string" />
+      <output id="OutputClause_18ypvo9" label="Generic fixtext" typeRef="string" />
+      <rule id="DecisionRule_18veajp">
+        <description>GR 1.242</description>
+        <inputEntry id="UnaryTests_0lt9hyz">
+          <text>Yes</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rdkvln">
+          <text>"HOLD"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1885h6r">
+          <text>"Per ICD-CM coding guidelines,&lt;List of Type of validation&gt; diagnosis code[[s]] &lt;List of Invalid Diagnosis codes&gt; cannot be sequenced as the first-listed or principal diagnosis."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jm9s1l">
+          <text>"Please review the medical record and diagnosis coding on this Visit."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bq9okk">
+          <text>['MEDICALRECORD', 'DX']</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
