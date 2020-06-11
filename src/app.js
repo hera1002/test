@@ -86,7 +86,7 @@ document.querySelector('#compare-xml').addEventListener('click', function (e) {
   loadXmlDiagrams();
 });
 
-
+/*
 function loadXmlDiagrams() {
   console.log('loadfunction');
   var xml1 = (newDiagram);
@@ -109,7 +109,7 @@ function loadXmlDiagrams() {
   });
 }
 
-
+*/
 
 // Tab functionality 
 /*
